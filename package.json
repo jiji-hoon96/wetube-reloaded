@@ -2,10 +2,22 @@
   "name": "jihoontube",
   "version": "1.0.0",
   "description": "I make Youtube clone coding",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiji-hoon96/wetube-reloaded"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec babel-node src/server.js"
   },
   "author": "jihoon",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.4",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  }
 }
