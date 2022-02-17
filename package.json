@@ -1,0 +1,11 @@
+{
+  "name": "jihoontube",
+  "version": "1.0.0",
+  "description": "I make Youtube clone coding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jihoon",
+  "license": "ISC"
+}
