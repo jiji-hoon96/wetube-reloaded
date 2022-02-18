@@ -15,6 +15,7 @@ b. UserRotuer
 
 c. VideoRouter
 /videos/watch => Video를 보는 페이지
+/videos/upload => Video를 업로드하는 페이지
 /videos/edit => Video를 수정하는 페이지
 /videos/delete => Video를 지우는 페이지
 /videos/comments => 비디오에 댓글을 작성하는 페이지
