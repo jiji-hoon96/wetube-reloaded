@@ -1,5 +1,4 @@
-export const edit = (req, res) =>
-  res.send("여기는 유저의 정보를 수정하는 페이지입니다");
+export const edit = (req, res) => res.render("edit", { pageTitle: "edit" });
 
 export const remove = (req, res) => {
   res.send("여기는 유저의 정보를 지우는 페이지입니다");

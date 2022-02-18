@@ -1,8 +1,6 @@
-doctype html
-html(lang='ko')
-    head 
-        title=JihoonTube
-    body 
-        h1 안녕 여기는 지훈튜브야
-    footer 
-        JIhoonTube
+extends base
+include mixins/video.pug
+
+block content 
+    each video in videos
+        +video(video)
