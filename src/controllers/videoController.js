@@ -1,16 +1,17 @@
-export const handleWatchVideo = (req, res) => {
+export const home = (req, res) => res.render("home");
+
+export const watch = (req, res) => {
   res.send("여기는 비디오를 보는 페이지입니다");
 };
 
-export const handleUploadVideo = (req, res) => {
+export const upload = (req, res) => {
   res.send("여기는 비디오를 업로드하는 페이지입니다");
 };
-export const handleEditVideo = (req, res) => {
+export const edit = (req, res) => {
   res.send("여기는 비디오를 수정하는 페이지입니다");
 };
-export const handleDeleteVideo = (req, res) => {
+export const remove = (req, res) => {
   res.send("여기는 비디오를 지우는 페이지입니다");
 };
-export const handleCommentsVideo = (req, res) => {
-  res.send("여기는 비디오 댓글을 작성하는 페이지입니다");
-};
+
+export const search = (req, res) => res.send("여기는 비디오검색페이지입니다");

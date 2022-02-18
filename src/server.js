@@ -9,6 +9,8 @@ const logger = morgan("dev");
 app.use(logger);
 const localHost = 4000;
 
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
