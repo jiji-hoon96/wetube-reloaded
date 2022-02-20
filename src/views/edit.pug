@@ -1,1 +1,5 @@
 extends base.pug
+block content
+    form(method="POST") 
+        input(type="text", placholder="Edit title", name="title", value=video.title)
+        input(type='submit', value="Edit")
