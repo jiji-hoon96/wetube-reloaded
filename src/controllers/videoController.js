@@ -46,6 +46,24 @@ export const postEdit = (req, res) => {
   return res.redirect(`/videos/${id}`);
 };
 
+export const getUpload = (req, res) => {
+  return res.render("upload", { pageTitle: "Upload Video" });
+};
+
+export const postUpload = (req, res) => {
+  const { title, rating, comments, createdAt, views } = req.body;
+  const newVideo = {
+    title,
+    rating,
+    comments,
+    createdAt,
+    views,
+    id: videos.length + 1,
+  };
+  videos.push(newVideo);
+  return res.redirect("/");
+};
+
 export const remove = (req, res) => {
   res.send("여기는 비디오를 지우는 페이지입니다");
 };

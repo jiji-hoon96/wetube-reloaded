@@ -1,2 +1,11 @@
 extends base.pug
 
+block content 
+    h3 Hello from upload
+    form(method="POST")
+        input(type="text",placeholder="Title",value='title',name='title')
+        input(type="text",placeholder="Rate",value='rating',name='rating')
+        input(type="text",placeholder="Comment",value='comment',name='comments')
+        input(type="text",placeholder="CreatedAt",value='createdat',name='createdAt')
+        input(type="text",placeholder="Views",value='views',name='views')
+        input(type="submit", value="Save")
