@@ -1,48 +1,21 @@
-let videos = [
-  {
-    title: "첫번째 게시물",
-    rating: 5,
-    comments: 2,
-    createdAt: "2 minutes age",
-    views: 50,
-    id: 1,
-  },
-  {
-    title: "두번째 게시물",
-    rating: 1,
-    comments: 223,
-    createdAt: "10 minutes age",
-    views: 523440,
-    id: 2,
-  },
-  {
-    title: "세번째 게시물",
-    rating: 2,
-    comments: 112,
-    createdAt: "1 minutes age",
-    views: 42,
-    id: 3,
-  },
-];
-export const home = (req, res) => {
-  return res.render("home", { pageTitle: "home", videos });
+import Video from "../models/Video";
+export const home = async (req, res) => {
+  const videos = await Video.find({});
+  return res.render("home", { pageTitle: "Home", videos });
 };
 
 export const watch = (req, res) => {
   const { id } = req.params;
-  const video = videos[id - 1];
-  return res.render("watch", { pageTitle: `Watching : ${video.title}`, video });
+  return res.render("watch", { pageTitle: "Watching" });
 };
 
 export const getEdit = (req, res) => {
   const { id } = req.params;
-  const video = videos[id - 1];
-  return res.render("edit", { pageTitle: `Edit : ${video.title}`, video });
+  return res.render("edit", { pageTitle: "Editing" });
 };
 export const postEdit = (req, res) => {
   const { id } = req.params;
   const { title } = req.body;
-  videos[id - 1].title = title;
   return res.redirect(`/videos/${id}`);
 };
 
@@ -50,17 +23,18 @@ export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
 
-export const postUpload = (req, res) => {
-  const { title, rating, comments, createdAt, views } = req.body;
-  const newVideo = {
+export const postUpload = async (req, res) => {
+  const { title, description, hashtags } = req.body;
+  await Video.create({
     title,
-    rating,
-    comments,
-    createdAt,
-    views,
-    id: videos.length + 1,
-  };
-  videos.push(newVideo);
+    description,
+    createdAd: Date.now(),
+    hashtags: hashtags.split(",").map((word) => `#${word}`),
+    meta: {
+      views: 1,
+      rating: 0,
+    },
+  });
   return res.redirect("/");
 };
 
