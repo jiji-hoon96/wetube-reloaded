@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/jihoontube"); //mongoose를 이용해서 javascript와 mongo 연결
+mongoose.connect(process.env.DB_URL); //mongoose를 이용해서 javascript와 mongo 연결
 
 const db = mongoose.connection;
 
