@@ -1,5 +1,6 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
+import session from "express-session";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "join" });
 export const postJoin = async (req, res) => {
@@ -58,10 +59,13 @@ export const postLogin = async (req, res) => {
       errorMessage: "잘못된 Password 입니다",
     });
   }
-  console.log("로그인성공했다 짜짜짜짜아안!!!!!!!");
+  req.session.loggedIn = true;
+  req.session.user = user;
   return res.redirect("/");
 };
 export const watch = (req, res) =>
   res.send("여기는 유저를 프로필을 보는 공간입니다");
 
-export const logout = (req, res) => res.send("여기는 로그아웃페이지입니다");
+export const logout = (req, res) => {
+  return res.render("logout", { pageTitle: "logout" });
+};
