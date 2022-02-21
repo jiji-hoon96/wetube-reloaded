@@ -1,1 +1,13 @@
 extends base
+
+block content 
+    if errorMessage 
+        h3=errorMessage
+    form(method="POST")
+        input(type="text",name='username',placeholder="Enter Username")
+        input(type='password',name="password",placeholder="Enter PassWord")
+        input(type='submit',value="login")
+    hr
+    div 
+        span Don't have an account? 
+        a(href="/join") Create one now =>
