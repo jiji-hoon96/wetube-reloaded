@@ -12,9 +12,8 @@ const videoSchema = new Schema({
   },
 });
 
-videoSchema.pre("save", async function () {
-  //미들웨어는 항상 model 앞에 있어야된다!
-  this.hashtags = this.hashtags[0]
+videoSchema.static("formatHashtags", function (hashtags) {
+  return hashtags
     .split(",")
     .map((word) => (word.startsWith("#") ? word : `#${word}`));
 });
