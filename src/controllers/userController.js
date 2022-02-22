@@ -142,8 +142,34 @@ export const logout = (req, res) => {
 export const getEdit = (req, res) =>
   res.render("edit-profile", { pageTitle: "Edit Profile" });
 export const postEdit = async (req, res) => {
+  /*
   const { name, email, username, location } = req.body;
   const { _id } = req.session.user;
+  const { sessionEmail } = req.session.user.email;
+  const { sessionUsername } = req.session.user.username;
+  */
+  const {
+    session: {
+      user: { _id, email: sessionEmail, username: sessionUsername },
+    },
+    body: { name, email, username, location },
+  } = req;
+  let searchParam = [];
+  if (sessionEmail !== email) {
+    searchParam.push({ email });
+  }
+  if (sessionUsername !== username) {
+    searchParam.push({ username });
+  }
+  if (searchParam.length > 0) {
+    const foundUser = await User.findOne({ $or: searchParam });
+    if (foundUser && foundUser._id.toString() !== _id) {
+      return res.status(400).render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage: "This username/email is already user.",
+      });
+    }
+  }
   const editUser = await User.findByIdAndUpdate(
     _id,
     {
