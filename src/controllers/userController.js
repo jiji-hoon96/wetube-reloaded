@@ -163,6 +163,7 @@ export const postEdit = async (req, res) => {
   }
   if (searchParam.length > 0) {
     const foundUser = await User.findOne({ $or: searchParam });
+    console.log(foundUser);
     if (foundUser && foundUser._id.toString() !== _id) {
       return res.status(400).render("edit-profile", {
         pageTitle: "Edit Profile",
@@ -183,5 +184,32 @@ export const postEdit = async (req, res) => {
   req.session.user = editUser;
   return res.redirect("/users/edit");
 };
-export const watch = (req, res) =>
-  res.send("여기는 유저를 프로필을 보는 공간입니다");
+
+export const getChangePassword = (req, res) => {
+  if (req.session.user.socialOnly === true) {
+    res.redirect("/");
+  }
+  res.render("users/change-password", { pageTitle: "Change Password" });
+};
+
+export const postChangePassword = async (req, res) => {
+  const { _id } = req.session.user;
+  const { oldPassword, newPassword, newPasswordConfirm } = req.body;
+  const user = await User.findById(_id);
+  const ok = await bcrypt.compare(oldPassword, user.password);
+  if (!ok) {
+    return res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "Password is not Correct",
+    });
+  }
+  if (newPassword !== newPasswordConfirm) {
+    res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "Password doesn't match",
+    });
+  }
+  user.password = newPassword;
+  await user.save();
+  res.redirect("/");
+};
