@@ -1,3 +1,5 @@
+import multer from "multer";
+
 export const localsMiddleware = (req, res, next) => {
   res.locals.loggedIn = Boolean(req.session.loggedIn); //로그인 되기전에는 Boolean이 false이다
   res.locals.siteName = "JihoonTube";
@@ -22,3 +24,5 @@ export const publicOnlyMiddleware = (req, res, next) => {
     return res.redirect("/");
   }
 };
+
+export const uploadFiles = multer({ dest: "uploads/" });
