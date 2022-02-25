@@ -1,5 +1,5 @@
 extends base
-include mixins/video.pug
+include mixins/video
 
 block content 
     form(method="GET") 
@@ -8,3 +8,5 @@ block content
     div
         each video in videos 
             +video(video)
+        else    
+            li Sorry nothing found.
