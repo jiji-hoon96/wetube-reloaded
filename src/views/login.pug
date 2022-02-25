@@ -7,9 +7,7 @@ block content
         input(type="text",name='username',placeholder="Enter Username")
         input(type='password',name="password",placeholder="Enter PassWord")
         input(type='submit',value="login")
-        br
-        a(href="/users/github/start") Login with Github =>
-    hr
-    div 
+        include partials/social-login
+    div.auth-switch
         span Don't have an account? 
         a(href="/join") Create one now =>
