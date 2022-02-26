@@ -2,7 +2,10 @@ const video = document.querySelector("video");
 const playBtn = document.getElementById("play");
 const muteBtn = document.getElementById("mute");
 const time = document.getElementById("time");
-const volume = document.getElementById("volume");
+const volumeRange = document.getElementById("volume");
+
+let volumeValue = 0.5;
+video.volume = volumeValue;
 
 const handlePlayClick = (e) => {
   if (video.paused) {
@@ -10,14 +13,40 @@ const handlePlayClick = (e) => {
   } else {
     video.pause();
   }
+  playBtn.innerText = video.paused ? "Play" : "Pause";
 };
 
-const handleMute = (e) => {};
+const handleMute = (e) => {
+  if (video.muted) {
+    video.muted = false;
+  } else {
+    video.muted = true;
+  }
+  if (video.volume === 0) {
+    video.volume = 0.3;
+    volumeValue = 0.3;
+  }
+  muteBtn.innerText = video.muted ? "UnMute" : "Mute";
+  volumeRange.value = video.muted ? 0 : volumeValue;
+};
 
-const handlePause = () => (playBtn.innerText = "Play");
-const handlePlay = () => (playBtn.innerText = "Pause");
+const handleVolumeChange = (event) => {
+  const {
+    target: { value },
+  } = event;
+  if (video.muted) {
+    video.muted = false;
+    muteBtn.innerText = "Mute";
+  }
+  volumeValue = Number(value);
+  video.volume = value;
+
+  if (volumeValue === 0) {
+    video.muted = true;
+    muteBtn.innerText = "UnMute";
+  }
+};
 
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
-video.addEventListener("pause", handlePause);
-video.addEventListener("play", handlePlay);
+volumeRange.addEventListener("input", handleVolumeChange);
