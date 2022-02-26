@@ -5,7 +5,11 @@ header {
   align-items: center;
   .header__logo {
     color: $red;
-    font-size: 38px;
+    font-size: 50px;
+    text-align: center;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
   ul {
     display: flex;
@@ -16,6 +20,9 @@ header {
       font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
+      &:hover {
+        transform: scale(1.2);
+      }
     }
     i {
       font-size: 16px;

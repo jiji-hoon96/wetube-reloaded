@@ -1,10 +1,24 @@
 // video mixin
 .video-mixin {
+  &:hover {
+    transform: scale(1.2);
+  }
   .video-mixin__thumb {
     height: 140px;
     border-radius: 7px;
     width: 100%;
-    background-color: ivory;
+    border: 1px solid white;
+    &:hover {
+      border: 1px solid tomato;
+    }
+    i {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      color: tomato;
+      font-size: 60px;
+    }
   }
   .video-mixin__data {
     padding: 0px 15px;
