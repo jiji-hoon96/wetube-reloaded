@@ -38,7 +38,7 @@ export const getEdit = async (req, res) => {
 export const postEdit = async (req, res) => {
   const { id } = req.params;
   const { title, description, hashtags } = req.body;
-  const video = await Video.exists({ _id: id });
+  const video = await Video.findById({ _id: id });
   if (!video) {
     return res
       .status(404)
@@ -49,7 +49,8 @@ export const postEdit = async (req, res) => {
     description,
     hashtags: Video.formatHashtags(hashtags),
   });
-  return res.redirect("/");
+  req.flash("success", "Changes saved.");
+  return res.redirect(`/videos/${id}`);
 };
 
 export const getUpload = (req, res) => {
