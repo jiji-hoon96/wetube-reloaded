@@ -70,6 +70,7 @@ const handleDownload = async () => {
   actionBtn.disabled = false;
   actionBtn.innerText = "Record Again";
   actionBtn.addEventListener("click", handleStart);
+  time = 5;
 };
 
 const handleStart = () => {
