@@ -147,7 +147,11 @@ videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 video.addEventListener("click", handleClickScreen);
 document.addEventListener("keydown", handleKeyPress);
-
+document.addEventListener("keypress", (event) => {
+  if (event.code === "Space" && event.target.id === "textarea") {
+    handleClickScreen();
+  }
+});
 if (video.readyState == 4) {
   handleLoadedMetadata();
 }
