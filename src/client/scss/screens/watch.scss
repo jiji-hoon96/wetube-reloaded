@@ -13,8 +13,9 @@
     margin-bottom: 5px;
     font-size: 14px;
     a {
-      color: cornflowerblue;
-      text-decoration: underline;
+      font-size: 15px;
+      color: wheat;
+      font-weight: bolder;
     }
   }
 }
@@ -32,4 +33,49 @@
     color: black;
     margin-bottom: 10px;
   }
+}
+
+.video__box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  a {
+    background-color: tomato;
+    margin-bottom: 10px;
+    width: 130px;
+    height: 20px;
+    border-radius: 3px;
+    text-align: center;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.video__comment-form {
+  display: flex;
+  button {
+    cursor: pointer;
+    color: #444444;
+    background: #f3f3f3;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 15px;
+    outline: none;
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+  }
+}
+
+.video__add-comments-textarea {
+  width: 90%;
+  height: 6.25em;
+  border: none;
+  resize: none;
+  margin-right: 15px;
 }
