@@ -75,7 +75,19 @@
 .video__add-comments-textarea {
   width: 90%;
   height: 6.25em;
+  border-radius: 10px;
+  font-size: 15px;
   border: none;
   resize: none;
   margin-right: 15px;
+}
+
+#delete__comment {
+  border: none;
+  margin-left: 6px;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+  }
 }
