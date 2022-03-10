@@ -6,7 +6,5 @@ import "./models/User";
 import "./models/Comment";
 import app from "./server";
 
-const localHost = 4000;
-app.listen(localHost, () =>
-  console.log(`Server Listening on port ${localHost}`)
-);
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server Listening on port ${PORT}`));
